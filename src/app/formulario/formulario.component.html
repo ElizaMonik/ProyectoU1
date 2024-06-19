@@ -1,0 +1,86 @@
+<section class="container">
+    <div class="container-log">
+        <div class="form-container">
+            <img src="https://cdn.pixabay.com/photo/2024/05/25/14/51/ai-generated-8787229_1280.png" alt="militar" class="militar" />
+            <form [formGroup]="formulario" (ngSubmit)="EnvioCorreo()">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h4>Registro de candidato</h4>
+                    </div>
+                    <div class="col-6">
+                        <input id="nombre" placeholder="Nombre" formControlName="nombre" required>
+                        <div *ngIf="mostrarErrores.nombre">
+                            <small *ngIf="formulario.get('nombre')?.errors?.['required']">El nombre es obligatorio.</small>
+                            <small *ngIf="formulario.get('nombre')?.errors?.['pattern']">El nombre solo puede contener letras.</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input id="apellido" placeholder="Apellido" formControlName="apellido" required>
+                        <div *ngIf="mostrarErrores.apellido">
+                            <small *ngIf="formulario.get('apellido')?.errors?.['required']">El apellido es obligatorio.</small>
+                            <small *ngIf="formulario.get('apellido')?.errors?.['pattern']">El apellido solo puede contener letras.</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input id="cedula" placeholder="Cedula" formControlName="cedula" maxlength="10" required>
+                        <div *ngIf="mostrarErrores.cedula">
+                            <small *ngIf="formulario.get('cedula')?.errors?.['required']">La cédula es obligatoria.</small>
+                            <small *ngIf="formulario.get('cedula')?.errors?.['minlength']">La cédula debe tener 10 dígitos.</small>
+                            <small *ngIf="formulario.get('cedula')?.errors?.['pattern']">La cédula solo puede contener números.</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input id="edad" placeholder="Edad" formControlName="edad" type="number" required>
+                        <div *ngIf="mostrarErrores.edad">
+                            <small *ngIf="formulario.get('edad')?.errors?.['required']">La edad es obligatoria.</small>
+                            <small *ngIf="formulario.get('edad')?.errors?.['min']">Debe ser mayor de 18 años.</small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <input id="correo" type="email" placeholder="Correo" formControlName="correo" required>
+                        <div *ngIf="mostrarErrores.correo">
+                            <small *ngIf="formulario.get('correo')?.errors?.['required']">El correo es obligatorio.</small>
+                            <small *ngIf="formulario.get('correo')?.errors?.['email']">Debe ser un correo válido.</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <select id="unidad" formControlName="unidad" class="form-control" required>
+                            <option value="" disabled selected>Unidad a Ingresar</option>
+                            <option value="La FAE">FAE</option>
+                            <option value="El Ejercito">Ejercito</option>
+                            <option value="La Marina">Marina</option>
+                        </select>
+                        <div *ngIf="mostrarErrores.unidad">
+                            <small *ngIf="formulario.get('unidad')?.errors?.['required']">Debe seleccionar una unidad.</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input id="peso" placeholder="Peso en kg" formControlName="peso" type="number" required>
+                        <div *ngIf="mostrarErrores.peso">
+                            <small *ngIf="formulario.get('peso')?.errors?.['required']">El peso es obligatorio.</small>
+                            <small *ngIf="formulario.get('peso')?.errors?.['min']">El peso debe ser un valor positivo.</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input id="talla" placeholder="Talla Ej:1,57" formControlName="talla" type="number" step="0.01" required>
+                        <div *ngIf="mostrarErrores.talla">
+                            <small *ngIf="formulario.get('talla')?.errors?.['required']">La talla es obligatoria.</small>
+                            <small *ngIf="formulario.get('talla')?.errors?.['validarTalla']">La talla debe ser un número válido (ej. 1.75).</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input id="fecha" placeholder="Fecha" formControlName="fecha" type="date" required>
+                        <div *ngIf="mostrarErrores.fecha">
+                            <small *ngIf="formulario.get('fecha')?.errors?.['required']">La fecha es obligatoria.</small>
+                            <small *ngIf="formulario.get('fecha')?.errors?.['validarFecha']">La fecha debe ser posterior.</small>
+                        </div>
+                    </div>
+                </div>
+                <button [routerLink]="['/app-correo-bienvenida']">XX</button>
+                <button class="boton"  type="submit" (click)="EnvioCorreo()">Enviar</button>
+            </form>
+        </div>
+        
+    </div>
+    
+</section>

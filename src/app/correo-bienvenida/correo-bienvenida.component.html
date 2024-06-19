@@ -1,0 +1,31 @@
+<section class="container">
+    <div class="container-log">
+        <div class="form-container">
+            <div class="col-12 text-center">
+                <h4>Bienvenido a la escuela XXXXXXXXXXXXXXX</h4>
+                <p>
+                    Usted se ha inscrito a <b>{{datosFormulario.unidad}}</b>, ha seleccionado el día <b>{{datosFormulario.fecha}}</b>. Hasta el momento tiene 23
+                    sesiones del plan,
+                    el valor a cancelar es de <b>${{datosFormulario.valor}}</b>.
+                </p>
+                <p>
+                    En caso de aceptar la inscripción pague al número de cuenta <b>4893403904329</b>:
+                </p>
+
+                <input type="file" (change)="onFileSelected($event)" class="file-input">
+
+                <div class="content">
+                    <div class="image">
+                        @if(imagenUrl){
+                        <img id="imagen-cargada" [src]="imagenUrl" alt="Imagen Cargada" class="loaded-image"/>
+                        }
+                    </div>
+                </div>
+            </div>
+            <button class="boton">Inscribirme</button>
+        </div>
+        @if(!imagenUrl){
+            <img src="https://previews.123rf.com/images/rudall30/rudall301509/rudall30150900081/45727418-ilustraci%C3%B3n-de-bonita-caricatura-de-un-soldado.jpg" alt="militar" class="militar" />
+        }
+    </div>
+</section>
